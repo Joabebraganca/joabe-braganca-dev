@@ -23,6 +23,7 @@ import { useState, type ReactNode } from "react";
 import curriculoAsset from "@/assets/curriculo.pdf.asset.json";
 import tabelaAsset from "@/assets/tabela-servicos.pdf.asset.json";
 import logoAsset from "@/assets/logo-joabe.png.asset.json";
+import fotoAsset from "@/assets/joabe-foto.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -357,12 +358,15 @@ function Hero() {
         <FadeUp delay={0.3}>
           <div className="relative mx-auto md:mx-0">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/40 via-cyan/20 to-transparent blur-2xl" />
-            <div className="relative h-64 w-64 overflow-hidden rounded-3xl border border-border glass md:h-72 md:w-72">
-              <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/20 via-transparent to-cyan/20">
-                <span className="font-display text-6xl font-semibold text-gradient">JB</span>
-              </div>
+            <div className="relative h-72 w-64 overflow-hidden rounded-3xl border border-border glass md:h-96 md:w-80">
+              <img
+                src={fotoAsset.url}
+                alt="Joabe Bragança"
+                className="h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 rounded-xl bg-background/60 px-3 py-2 text-[11px] text-muted-foreground backdrop-blur">
-                Foto profissional — placeholder
+                Joabe Bragança · Analista de TI
               </div>
             </div>
           </div>
