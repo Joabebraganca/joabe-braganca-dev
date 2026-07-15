@@ -19,6 +19,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
+import curriculoAsset from "@/assets/curriculo.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -632,7 +633,10 @@ function Resume() {
             </p>
           </div>
           <a
-            href="#"
+            href={curriculoAsset.url}
+            download="Joabe_Pereira_Braganca_2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-[0_10px_40px_-10px_oklch(0.58_0.22_260/0.6)] transition-transform hover:scale-[1.02]"
           >
             <Download className="h-4 w-4" /> Download em PDF
