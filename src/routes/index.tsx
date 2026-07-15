@@ -17,9 +17,11 @@ import {
   Briefcase,
   MapPin,
   Sparkles,
+  FileText,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import curriculoAsset from "@/assets/curriculo.pdf.asset.json";
+import tabelaAsset from "@/assets/tabela-servicos.pdf.asset.json";
 import logoAsset from "@/assets/logo-joabe.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -43,6 +45,7 @@ const NAV = [
   { href: "#competencias", label: "Competências" },
   { href: "#projetos", label: "Projetos" },
   { href: "#certificacoes", label: "Certificações" },
+  { href: "#valores", label: "Valores" },
   { href: "#contato", label: "Contato" },
 ];
 
