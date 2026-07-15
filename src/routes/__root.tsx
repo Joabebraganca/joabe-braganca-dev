@@ -90,10 +90,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { title: "Lovable App" },
+      { property: "og:title", content: "Lovable App" },
+      { name: "twitter:title", content: "Lovable App" },
+      { name: "description", content: "Joabe Bragança's Digital Portfolio showcases IT expertise, web development, and automation skills." },
+      { property: "og:description", content: "Joabe Bragança's Digital Portfolio showcases IT expertise, web development, and automation skills." },
+      { name: "twitter:description", content: "Joabe Bragança's Digital Portfolio showcases IT expertise, web development, and automation skills." },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=630&fit=crop" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=630&fit=crop" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
