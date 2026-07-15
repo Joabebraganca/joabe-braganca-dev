@@ -702,10 +702,10 @@ function Contact() {
 
         <FadeUp delay={0.1}>
           <div className="space-y-3">
-            <ContactLink icon={<MessageCircle className="h-4 w-4" />} label="WhatsApp" value="Enviar mensagem" href="#" />
-            <ContactLink icon={<Linkedin className="h-4 w-4" />} label="LinkedIn" value="/in/joabebraganca" href="#" />
-            <ContactLink icon={<Github className="h-4 w-4" />} label="GitHub" value="@joabebraganca" href="#" />
-            <ContactLink icon={<Mail className="h-4 w-4" />} label="E-mail" value="contato@joabebraganca.com" href="#" />
+            <ContactLink icon={<MessageCircle className="h-4 w-4" />} label="WhatsApp" value="(61) 99643-0533" href="https://wa.me/5561996430533" />
+            <ContactLink icon={<Linkedin className="h-4 w-4" />} label="LinkedIn" value="/in/joabe-braganca" href="https://www.linkedin.com/in/joabe-braganca" />
+            <ContactLink icon={<Github className="h-4 w-4" />} label="GitHub" value="@Joabebraganca" href="https://github.com/Joabebraganca" />
+            <ContactLink icon={<Mail className="h-4 w-4" />} label="E-mail" value="joabebraganca77@gmail.com" href="mailto:joabebraganca77@gmail.com" />
           </div>
         </FadeUp>
       </div>
