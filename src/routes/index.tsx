@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import curriculoAsset from "@/assets/curriculo.pdf.asset.json";
+import logoAsset from "@/assets/logo-joabe.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
