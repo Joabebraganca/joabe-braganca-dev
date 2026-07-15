@@ -651,6 +651,58 @@ function Resume() {
   );
 }
 
+function PriceTable() {
+  return (
+    <Section
+      id="valores"
+      eyebrow="Tabela de Valores"
+      title="Serviços de TI e Ordem de Serviço."
+      description="Baixe a tabela completa com valores de manutenção, suporte técnico, instalação de sistemas e demais serviços."
+    >
+      <FadeUp>
+        <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-10">
+          <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-cyan/20 blur-3xl" />
+          <div className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
+          <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+            <div className="flex items-start gap-5">
+              <div className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary ring-1 ring-primary/30">
+                <FileText className="h-6 w-6" />
+              </div>
+              <div className="max-w-xl">
+                <h3 className="font-display text-xl font-medium">
+                  Tabela de Serviços de TI
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Documento em PDF com a relação de serviços prestados, valores
+                  de referência e modelo de ordem de serviço para orçamento.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <a
+                href={tabelaAsset.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+              >
+                <ExternalLink className="h-4 w-4" /> Visualizar
+              </a>
+              <a
+                href={tabelaAsset.url}
+                download="Tabela_de_Servicos_de_TI.pdf"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-[0_10px_40px_-10px_oklch(0.58_0.22_260/0.6)] transition-transform hover:scale-[1.02]"
+              >
+                <Download className="h-4 w-4" /> Baixar tabela
+              </a>
+            </div>
+          </div>
+        </div>
+      </FadeUp>
+    </Section>
+  );
+}
+
+
 function Contact() {
   return (
     <Section
