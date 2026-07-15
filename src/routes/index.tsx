@@ -192,8 +192,8 @@ function Nav() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="flex items-center gap-2 font-display text-sm font-semibold tracking-tight">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/30">
-            JB
+          <span className="inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-border">
+            <img src={logoAsset.url} alt="Logo Joabe Bragança" className="h-full w-full object-contain" />
           </span>
           <span className="hidden sm:inline">Joabe Bragança</span>
         </a>
