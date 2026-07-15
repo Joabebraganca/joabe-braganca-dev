@@ -834,6 +834,7 @@ function Portfolio() {
         <Projects />
         <Certifications />
         <Resume />
+        <PriceTable />
         <Contact />
       </main>
       <Footer />
