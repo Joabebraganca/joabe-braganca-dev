@@ -143,12 +143,21 @@ const SKILLS: { title: string; icon: ReactNode; items: string[] }[] = [
   },
 ];
 
-const PROJECTS = [
+type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  demo?: string;
+  repo?: string;
+};
+
+const PROJECTS: Project[] = [
   {
-    title: "Projeto em breve",
+    title: "Mota Farias Advocacia",
     description:
-      "Espaço reservado para futuros projetos de desenvolvimento web e automação.",
+      "Site institucional para escritório de advocacia em Brasília — identidade sóbria, foco em conversão via WhatsApp e apresentação de especialidades.",
     tech: ["React", "TypeScript", "Tailwind"],
+    demo: "https://teste-joabe.lovable.app",
   },
   {
     title: "Projeto em breve",
