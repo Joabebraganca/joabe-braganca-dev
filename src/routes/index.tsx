@@ -724,7 +724,14 @@ function Contact() {
       (form.assunto ? `Assunto: ${form.assunto}\n\n` : "\n") +
       form.mensagem;
     const url = `https://wa.me/5561996430533?text=${encodeURIComponent(texto)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    // Usa um <a> real para evitar bloqueio de popup no iframe de preview
+    const a = document.createElement("a");
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   };
 
   return (
