@@ -708,6 +708,25 @@ function PriceTable() {
 
 
 function Contact() {
+  const [form, setForm] = useState({ nome: "", email: "", assunto: "", mensagem: "" });
+  const [status, setStatus] = useState<"idle" | "error">("idle");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.nome.trim() || !form.email.trim() || !form.mensagem.trim()) {
+      setStatus("error");
+      return;
+    }
+    setStatus("idle");
+    const texto =
+      `Olá, Joabe! Meu nome é ${form.nome}.\n` +
+      `E-mail: ${form.email}\n` +
+      (form.assunto ? `Assunto: ${form.assunto}\n\n` : "\n") +
+      form.mensagem;
+    const url = `https://wa.me/5561996430533?text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <Section
       id="contato"
@@ -717,14 +736,14 @@ function Contact() {
     >
       <div className="grid gap-8 md:grid-cols-[1.2fr_1fr]">
         <FadeUp>
-          <form
-            className="glass space-y-4 rounded-2xl p-6"
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <form className="glass space-y-4 rounded-2xl p-6" onSubmit={handleSubmit}>
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Nome">
                 <input
                   type="text"
+                  required
+                  value={form.nome}
+                  onChange={(e) => setForm((f) => ({ ...f, nome: e.target.value }))}
                   className="w-full rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary"
                   placeholder="Seu nome"
                 />
@@ -732,6 +751,9 @@ function Contact() {
               <Field label="E-mail">
                 <input
                   type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                   className="w-full rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary"
                   placeholder="voce@email.com"
                 />
@@ -740,6 +762,8 @@ function Contact() {
             <Field label="Assunto">
               <input
                 type="text"
+                value={form.assunto}
+                onChange={(e) => setForm((f) => ({ ...f, assunto: e.target.value }))}
                 className="w-full rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary"
                 placeholder="Como posso ajudar?"
               />
@@ -747,16 +771,25 @@ function Contact() {
             <Field label="Mensagem">
               <textarea
                 rows={5}
+                required
+                value={form.mensagem}
+                onChange={(e) => setForm((f) => ({ ...f, mensagem: e.target.value }))}
                 className="w-full resize-none rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary"
                 placeholder="Escreva sua mensagem..."
               />
             </Field>
+            {status === "error" && (
+              <p className="text-xs text-red-400">Preencha nome, e-mail e mensagem.</p>
+            )}
             <button
               type="submit"
               className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.01] sm:w-auto"
             >
-              Enviar mensagem <ArrowRight className="h-4 w-4" />
+              Enviar via WhatsApp <ArrowRight className="h-4 w-4" />
             </button>
+            <p className="text-xs text-muted-foreground">
+              Ao enviar, o WhatsApp abrirá com sua mensagem já preenchida.
+            </p>
           </form>
         </FadeUp>
 
