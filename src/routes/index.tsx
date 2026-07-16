@@ -583,20 +583,30 @@ function Projects() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-5 flex gap-2">
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/60 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-card"
-                  >
-                    <Github className="h-3.5 w-3.5" /> GitHub
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-transform hover:scale-[1.02]"
-                  >
-                    <ExternalLink className="h-3.5 w-3.5" /> Demonstração
-                  </a>
-                </div>
+                {(p.repo || p.demo) && (
+                  <div className="mt-5 flex gap-2">
+                    {p.repo && (
+                      <a
+                        href={p.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/60 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-card"
+                      >
+                        <Github className="h-3.5 w-3.5" /> GitHub
+                      </a>
+                    )}
+                    {p.demo && (
+                      <a
+                        href={p.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-transform hover:scale-[1.02]"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" /> Demonstração
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </FadeUp>
