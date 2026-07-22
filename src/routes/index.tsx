@@ -52,9 +52,24 @@ const NAV = [
 
 const EXPERIENCES = [
   {
+    company: "EON Incorporadora S.A.",
+    role: "Analista de Suporte de TI (PJ)",
+    period: "Jul/2026 – Atual",
+    items: [
+      "Suporte técnico a colaboradores: hardware, software, sistemas e infraestrutura",
+      "Instalação, configuração e manutenção de computadores, notebooks e impressoras",
+      "Gestão de contas de usuários, e-mails e permissões de acesso",
+      "Monitoramento da infraestrutura de TI e rede Wi-Fi corporativa",
+      "Administração e manutenção de fluxos de automação em n8n",
+      "Monitoramento de segurança, vulnerabilidades e boas práticas em aplicações",
+      "Testes, validações e manutenção preventiva de automações",
+      "Registro e acompanhamento de chamados e suporte a ferramentas corporativas",
+      "Tecnologias: n8n, Google Workspace, Windows 10/11, Microsoft 365, Redes TCP/IP e Wi-Fi, Cybersecurity",
+    ],
+  },
+  {
     company: "Central IT",
     role: "Técnico de Operação e Serviços",
-    period: "Atual",
     items: [
       "Suporte Técnico N2 e atendimento corporativo",
       "Diagnóstico e resolução de incidentes",
@@ -62,6 +77,7 @@ const EXPERIENCES = [
       "Service Desk — atendimento presencial e remoto",
     ],
   },
+
   {
     company: "Aliança Assessoria",
     role: "Técnico de Suporte",
