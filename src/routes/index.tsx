@@ -2,21 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
+  ArrowUpRight,
   Download,
   Mail,
   Github,
   Linkedin,
   MessageCircle,
-  ExternalLink,
   Code2,
   Headphones,
   Database,
   Workflow,
-  GraduationCap,
-  Award,
-  Briefcase,
-  MapPin,
-  Sparkles,
   FileText,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
@@ -68,7 +63,6 @@ const EXPERIENCES = [
       "Participação em projetos de inovação e transformação digital da holding",
     ],
   },
-
   {
     company: "Central IT",
     role: "Técnico de Operação e Serviços",
@@ -79,7 +73,6 @@ const EXPERIENCES = [
       "Service Desk — atendimento presencial e remoto",
     ],
   },
-
   {
     company: "Aliança Assessoria",
     role: "Técnico de Suporte",
@@ -122,7 +115,7 @@ const EXPERIENCES = [
 const SKILLS: { title: string; icon: ReactNode; items: string[] }[] = [
   {
     title: "Suporte Técnico",
-    icon: <Headphones className="h-5 w-5" />,
+    icon: <Headphones className="h-4 w-4" />,
     items: [
       "Windows",
       "Microsoft 365",
@@ -136,7 +129,7 @@ const SKILLS: { title: string; icon: ReactNode; items: string[] }[] = [
   },
   {
     title: "Desenvolvimento",
-    icon: <Code2 className="h-5 w-5" />,
+    icon: <Code2 className="h-4 w-4" />,
     items: [
       "HTML",
       "CSS",
@@ -151,12 +144,12 @@ const SKILLS: { title: string; icon: ReactNode; items: string[] }[] = [
   },
   {
     title: "Banco de Dados",
-    icon: <Database className="h-5 w-5" />,
+    icon: <Database className="h-4 w-4" />,
     items: ["Supabase", "SQL (conhecimento)"],
   },
   {
     title: "Automação",
-    icon: <Workflow className="h-5 w-5" />,
+    icon: <Workflow className="h-4 w-4" />,
     items: ["N8N", "Dify", "Integrações de APIs", "Engenharia de Prompts"],
   },
 ];
@@ -205,35 +198,37 @@ const CERTIFICATIONS = [
 
 /* ------------------------------- UI ------------------------------- */
 
-function Background() {
+function FadeUp({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+  const reduce = useReducedMotion();
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-      <div className="absolute inset-0 bg-dots opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_10%,transparent_60%)]" />
-      <div className="absolute -top-40 left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-primary/25 blur-[140px]" />
-      <div className="absolute top-1/3 -right-40 h-[420px] w-[420px] rounded-full bg-cyan/20 blur-[140px]" />
-      <div className="absolute bottom-0 left-0 h-[380px] w-[380px] rounded-full bg-primary/15 blur-[140px]" />
-    </div>
+    <motion.div
+      initial={reduce ? undefined : { opacity: 0, y: 10 }}
+      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
   );
 }
 
 function Nav() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-center gap-2 font-display text-sm font-semibold tracking-tight">
-          <span className="inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-border">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+        <a href="#top" className="flex items-center gap-3 text-sm font-medium tracking-tight">
+          <span className="inline-flex h-8 w-8 items-center justify-center overflow-hidden border border-border bg-card">
             <img src={logoAsset.url} alt="Logo Joabe Bragança" className="h-full w-full object-contain" />
           </span>
           <span className="hidden sm:inline">Joabe Bragança</span>
         </a>
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
             <a
               key={n.href}
               href={n.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
             >
               {n.label}
             </a>
@@ -241,30 +236,30 @@ function Nav() {
         </nav>
         <a
           href="#contato"
-          className="hidden md:inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-xs font-medium text-background transition-transform hover:scale-[1.02]"
+          className="hidden items-center gap-2 border border-foreground bg-foreground px-4 py-2 text-[11px] font-medium uppercase tracking-[0.14em] text-background transition-colors hover:bg-background hover:text-foreground md:inline-flex"
         >
-          Falar comigo <ArrowRight className="h-3.5 w-3.5" />
+          Falar comigo
         </a>
         <button
-          className="md:hidden rounded-md border border-border p-2 text-muted-foreground"
+          className="border border-border p-2 text-muted-foreground md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
         >
           <div className="space-y-1">
-            <span className="block h-0.5 w-4 bg-current" />
-            <span className="block h-0.5 w-4 bg-current" />
+            <span className="block h-px w-4 bg-current" />
+            <span className="block h-px w-4 bg-current" />
           </div>
         </button>
       </div>
       {open && (
-        <div className="md:hidden border-t border-border/60 bg-background/95">
-          <div className="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-3">
+        <div className="border-t border-border bg-background md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col px-6 py-2">
             {NAV.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                className="border-b border-border py-3 text-sm text-muted-foreground last:border-0 hover:text-foreground"
               >
                 {n.label}
               </a>
@@ -290,39 +285,26 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-      <FadeUp>
-        {eyebrow && (
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
-            {eyebrow}
+    <section id={id} className="border-t border-border">
+      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:px-10">
+        <FadeUp>
+          <div className="grid gap-6 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-12">
+            <div>
+              {eyebrow && <div className="label-mono">{eyebrow}</div>}
+            </div>
+            <div>
+              <h2 className="max-w-2xl text-2xl leading-[1.15] md:text-4xl">{title}</h2>
+              {description && (
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                  {description}
+                </p>
+              )}
+            </div>
           </div>
-        )}
-        <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          {title}
-        </h2>
-        {description && (
-          <p className="mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">
-            {description}
-          </p>
-        )}
-      </FadeUp>
-      <div className="mt-12">{children}</div>
+        </FadeUp>
+        <div className="mt-12 md:mt-16">{children}</div>
+      </div>
     </section>
-  );
-}
-
-function FadeUp({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
-  const reduce = useReducedMotion();
-  return (
-    <motion.div
-      initial={reduce ? undefined : { opacity: 0, y: 18 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
   );
 }
 
@@ -330,91 +312,91 @@ function FadeUp({ children, delay = 0 }: { children: ReactNode; delay?: number }
 
 function Hero() {
   return (
-    <section id="top" className="relative mx-auto max-w-6xl px-6 pt-20 pb-24 md:pt-32 md:pb-36">
-      <FadeUp>
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
-          <Sparkles className="h-3.5 w-3.5 text-cyan" />
-          Disponível para novas oportunidades
-        </div>
-      </FadeUp>
+    <section id="top" className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-hairgrid opacity-70" />
+      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-16 md:pt-28 md:pb-24 lg:px-10">
+        <FadeUp>
+          <div className="label-mono flex items-center gap-2">
+            <span className="h-1.5 w-1.5 bg-foreground" />
+            Disponível para novas oportunidades
+          </div>
+        </FadeUp>
 
-      <div className="mt-8 grid gap-12 md:grid-cols-[1fr_auto] md:items-center">
-        <div>
-          <FadeUp delay={0.05}>
-            <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">
-              Joabe <span className="text-gradient">Bragança</span>
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.12}>
-            <p className="mt-4 text-lg text-foreground/90 md:text-xl">
-              Analista de Tecnologia da Informação
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.18}>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              Formado em Análise e Desenvolvimento de Sistemas, com experiência em
-              suporte técnico corporativo, desenvolvimento web e automação de
-              processos.
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.24}>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#projetos"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-[0_10px_40px_-10px_oklch(0.58_0.22_260/0.6)] transition-transform hover:scale-[1.02]"
-              >
-                Ver Projetos
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
-              <a
-                href="#curriculo"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-5 py-3 text-sm font-medium text-foreground backdrop-blur transition-colors hover:bg-card"
-              >
-                <Download className="h-4 w-4" /> Download do Currículo
-              </a>
-              <a
-                href="#contato"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-5 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Mail className="h-4 w-4" /> Entrar em Contato
-              </a>
-            </div>
-          </FadeUp>
-        </div>
+        <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_22rem] lg:items-end">
+          <div>
+            <FadeUp delay={0.05}>
+              <h1 className="max-w-3xl text-[2.75rem] leading-[1.02] md:text-[4.5rem]">
+                Tecnologia da Informação com
+                <span className="text-muted-foreground"> operação, código e automação.</span>
+              </h1>
+            </FadeUp>
+            <FadeUp delay={0.14}>
+              <p className="mt-8 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                Joabe Bragança — Analista de TI formado em Análise e Desenvolvimento
+                de Sistemas, com experiência em suporte técnico corporativo (N1–N3),
+                desenvolvimento web e automação de processos.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a
+                  href="#projetos"
+                  className="group inline-flex items-center gap-2 border border-foreground bg-foreground px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-background transition-colors hover:bg-background hover:text-foreground"
+                >
+                  Ver projetos
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </a>
+                <a
+                  href="#curriculo"
+                  className="inline-flex items-center gap-2 border border-border px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-foreground transition-colors hover:border-foreground"
+                >
+                  <Download className="h-3.5 w-3.5" /> Currículo
+                </a>
+                <a
+                  href="#contato"
+                  className="inline-flex items-center gap-2 px-1 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
+                >
+                  <Mail className="h-3.5 w-3.5" /> Contato
+                </a>
+              </div>
+            </FadeUp>
+          </div>
 
-        <FadeUp delay={0.3}>
-          <div className="relative mx-auto md:mx-0">
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/40 via-cyan/20 to-transparent blur-2xl" />
-            <div className="relative h-72 w-64 overflow-hidden rounded-3xl border border-border glass md:h-96 md:w-80">
+          <FadeUp delay={0.26}>
+            <figure className="border border-border bg-card">
               <img
                 src={fotoAsset.url}
                 alt="Joabe Bragança"
-                className="h-full w-full object-cover"
+                className="aspect-[4/5] w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3 right-3 rounded-xl bg-background/60 px-3 py-2 text-[11px] text-muted-foreground backdrop-blur">
+              <figcaption className="label-mono border-t border-border px-4 py-3">
                 Joabe Bragança · Analista de TI
-              </div>
-            </div>
-          </div>
-        </FadeUp>
+              </figcaption>
+            </figure>
+          </FadeUp>
+        </div>
       </div>
 
-      <FadeUp delay={0.35}>
-        <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
-          {[
-            { k: "Formação", v: "ADS" },
-            { k: "Atuação", v: "Suporte N2" },
-            { k: "Foco", v: "Dev & Automação" },
-            { k: "Stack", v: "React · N8N · Supabase" },
-          ].map((s) => (
-            <div key={s.k} className="bg-card/60 px-5 py-4 backdrop-blur">
-              <div className="text-[11px] uppercase tracking-wider text-muted-foreground">{s.k}</div>
-              <div className="mt-1 font-display text-sm font-medium">{s.v}</div>
-            </div>
-          ))}
+      <div className="relative border-t border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <dl className="grid grid-cols-2 md:grid-cols-4">
+            {[
+              { k: "Formação", v: "ADS" },
+              { k: "Atuação", v: "Suporte N1–N3" },
+              { k: "Foco", v: "Dev & Automação" },
+              { k: "Stack", v: "React · N8N · Supabase" },
+            ].map((s, i) => (
+              <div
+                key={s.k}
+                className={`py-6 md:py-8 ${i > 0 ? "md:border-l md:border-border md:pl-6" : ""} ${i % 2 ? "border-l border-border pl-6 md:pl-6" : ""}`}
+              >
+                <dt className="label-mono">{s.k}</dt>
+                <dd className="mt-2 text-sm">{s.v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-      </FadeUp>
+      </div>
     </section>
   );
 }
@@ -423,66 +405,41 @@ function About() {
   return (
     <Section
       id="sobre"
-      eyebrow="Sobre mim"
+      eyebrow="01 — Sobre"
       title="Uma trajetória construída na prática."
-      description="Comecei na Tecnologia da Informação com foco em suporte técnico e, ao longo do tempo, ampliei minha atuação para desenvolvimento web e automação de processos."
     >
-      <div className="grid gap-8 md:grid-cols-[1.4fr_1fr]">
+      <div className="grid gap-12 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-12">
+        <div className="space-y-6">
+          {[
+            { k: "Formação", v: "Análise e Desenvolvimento de Sistemas" },
+            { k: "Atuação atual", v: "Suporte Técnico PJ — 4P Capital" },
+            { k: "Interesse", v: "Suporte, Desenvolvimento e Automação" },
+          ].map((m) => (
+            <div key={m.k} className="border-t border-border pt-4">
+              <div className="label-mono">{m.k}</div>
+              <div className="mt-1.5 text-sm">{m.v}</div>
+            </div>
+          ))}
+        </div>
         <FadeUp>
-          <div className="space-y-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+          <div className="max-w-2xl space-y-6 text-sm leading-relaxed text-muted-foreground md:text-base">
             <p>
-              Sou formado em Análise e Desenvolvimento de Sistemas e atuo como
-              Técnico de Operação e Serviços (Suporte N2), prestando suporte técnico
-              corporativo a usuários e ambientes com Microsoft 365, Active Directory
-              e ferramentas de Service Desk.
+              Sou formado em Análise e Desenvolvimento de Sistemas e atuo em suporte
+              técnico corporativo, atendendo usuários e ambientes com Microsoft 365,
+              Active Directory e ferramentas de Service Desk.
             </p>
             <p>
-              Ao longo da carreira passei por diferentes empresas atendendo demandas
-              de manutenção, configuração de equipamentos, instalação de sistemas e
+              Ao longo da carreira passei por diferentes empresas atendendo demandas de
+              manutenção, configuração de equipamentos, instalação de sistemas e
               atendimento remoto. Em paralelo, desenvolvi projetos web em WordPress,
               React, HTML, CSS e JavaScript, e trabalhei com automações usando N8N,
               Dify e integrações de APIs.
             </p>
             <p>
-              Busco desenvolvimento contínuo, aprendendo novas ferramentas e
-              aprofundando conhecimentos em desenvolvimento, banco de dados e
-              automação — sempre com atenção à organização e à qualidade do
-              atendimento.
+              Busco desenvolvimento contínuo, aprofundando conhecimentos em
+              desenvolvimento, banco de dados e automação — sempre com atenção à
+              organização e à qualidade do atendimento.
             </p>
-          </div>
-        </FadeUp>
-
-        <FadeUp delay={0.1}>
-          <div className="glass rounded-2xl p-6">
-            <div className="flex items-center gap-3">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/30">
-                <GraduationCap className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="font-display text-sm font-medium">Formação</div>
-                <div className="text-xs text-muted-foreground">Análise e Desenvolvimento de Sistemas</div>
-              </div>
-            </div>
-            <div className="my-5 h-px bg-border" />
-            <div className="flex items-center gap-3">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan/15 text-cyan ring-1 ring-cyan/30">
-                <Briefcase className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="font-display text-sm font-medium">Atuação atual</div>
-                <div className="text-xs text-muted-foreground">Técnico de Operação e Serviços (N2)</div>
-              </div>
-            </div>
-            <div className="my-5 h-px bg-border" />
-            <div className="flex items-center gap-3">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/30">
-                <MapPin className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="font-display text-sm font-medium">Interesse</div>
-                <div className="text-xs text-muted-foreground">Suporte, Desenvolvimento e Automação</div>
-              </div>
-            </div>
           </div>
         </FadeUp>
       </div>
@@ -494,42 +451,29 @@ function Experience() {
   return (
     <Section
       id="experiencia"
-      eyebrow="Experiência"
+      eyebrow="02 — Experiência"
       title="Empresas e projetos por onde passei."
-      description="Uma linha do tempo com as principais atuações profissionais."
     >
-      <div className="relative">
-        <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-border to-transparent md:left-1/2" />
-        <div className="space-y-10">
-          {EXPERIENCES.map((exp, i) => (
-            <FadeUp key={exp.company} delay={i * 0.05}>
-              <div className={`relative md:grid md:grid-cols-2 md:gap-10 ${i % 2 ? "md:[&>*:first-child]:col-start-2" : ""}`}>
-                <div className="pl-12 md:pl-0 md:pr-10 md:text-right">
-                  <div className="absolute left-4 top-2 h-3 w-3 -translate-x-1/2 rounded-full bg-primary ring-4 ring-primary/20 md:left-1/2" />
-                  <div className="glass rounded-2xl p-6 transition-transform hover:-translate-y-0.5">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2 md:justify-end md:gap-4">
-                      <h3 className="font-display text-lg font-semibold">{exp.company}</h3>
-                      {exp.period && (
-                        <span className="rounded-full border border-border bg-card/60 px-2 py-0.5 text-[11px] text-muted-foreground">
-                          {exp.period}
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-1 text-sm text-primary">{exp.role}</p>
-                    <ul className={`mt-4 space-y-1.5 text-sm text-muted-foreground ${i % 2 ? "" : "md:text-right"}`}>
-                      {exp.items.map((it) => (
-                        <li key={it} className="flex items-start gap-2 md:justify-end">
-                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyan md:order-2" />
-                          <span className="md:order-1">{it}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+      <div className="border-t border-border">
+        {EXPERIENCES.map((exp, i) => (
+          <FadeUp key={exp.company} delay={i * 0.04}>
+            <article className="group grid gap-6 border-b border-border py-8 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-12">
+              <div>
+                <div className="label-mono">{exp.period ?? "Anterior"}</div>
+                <h3 className="mt-2 text-base leading-snug">{exp.company}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{exp.role}</p>
               </div>
-            </FadeUp>
-          ))}
-        </div>
+              <ul className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+                {exp.items.map((it) => (
+                  <li key={it} className="flex gap-3">
+                    <span className="mt-2 h-px w-3 shrink-0 bg-foreground/30" />
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </FadeUp>
+        ))}
       </div>
     </Section>
   );
@@ -539,26 +483,20 @@ function Skills() {
   return (
     <Section
       id="competencias"
-      eyebrow="Competências"
+      eyebrow="03 — Competências"
       title="Ferramentas e tecnologias que utilizo."
-      description="Organizadas por área de atuação."
     >
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid border-t border-l border-border md:grid-cols-2">
         {SKILLS.map((cat, i) => (
-          <FadeUp key={cat.title} delay={i * 0.05}>
-            <div className="glass group h-full rounded-2xl p-6 transition-all hover:border-primary/40">
+          <FadeUp key={cat.title} delay={i * 0.04}>
+            <div className="h-full border-r border-b border-border p-6 md:p-8">
               <div className="flex items-center gap-3">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/30 transition-colors group-hover:bg-primary/25">
-                  {cat.icon}
-                </div>
-                <h3 className="font-display text-lg font-medium">{cat.title}</h3>
+                <span className="text-foreground">{cat.icon}</span>
+                <h3 className="text-base">{cat.title}</h3>
               </div>
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
                 {cat.items.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-foreground/85"
-                  >
+                  <span key={s} className="font-mono text-[12px] text-muted-foreground">
                     {s}
                   </span>
                 ))}
@@ -575,40 +513,39 @@ function Projects() {
   return (
     <Section
       id="projetos"
-      eyebrow="Projetos"
+      eyebrow="04 — Projetos"
       title="Uma seleção do que estou construindo."
-      description="Espaços reservados para futuros projetos — em breve com casos reais."
     >
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid border-t border-l border-border md:grid-cols-3">
         {PROJECTS.map((p, i) => (
-          <FadeUp key={i} delay={i * 0.05}>
-            <div className="glass group flex h-full flex-col overflow-hidden rounded-2xl transition-all hover:-translate-y-0.5 hover:border-primary/40">
-              <div className="relative h-40 overflow-hidden border-b border-border bg-gradient-to-br from-primary/25 via-background to-cyan/20">
-                <div className="absolute inset-0 bg-grid opacity-40" />
+          <FadeUp key={i} delay={i * 0.04}>
+            <div className="flex h-full flex-col border-r border-b border-border">
+              <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-secondary">
+                <div className="absolute inset-0 bg-hairgrid opacity-80" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-xs uppercase tracking-widest text-muted-foreground">
-                    Placeholder
-                  </span>
+                  <span className="label-mono">{String(i + 1).padStart(2, "0")}</span>
                 </div>
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="font-display text-lg font-medium">{p.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.description}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <h3 className="text-base">{p.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {p.description}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-x-3 gap-y-1">
                   {p.tech.map((t) => (
-                    <span key={t} className="rounded-md bg-secondary px-2 py-0.5 text-[11px] text-secondary-foreground/80">
+                    <span key={t} className="font-mono text-[11px] text-muted-foreground">
                       {t}
                     </span>
                   ))}
                 </div>
                 {(p.repo || p.demo) && (
-                  <div className="mt-5 flex gap-2">
+                  <div className="mt-6 flex flex-wrap gap-4">
                     {p.repo && (
                       <a
                         href={p.repo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/60 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-card"
+                        className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.14em] underline decoration-border underline-offset-4 hover:decoration-foreground"
                       >
                         <Github className="h-3.5 w-3.5" /> GitHub
                       </a>
@@ -618,9 +555,9 @@ function Projects() {
                         href={p.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-transform hover:scale-[1.02]"
+                        className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.14em] underline decoration-border underline-offset-4 hover:decoration-foreground"
                       >
-                        <ExternalLink className="h-3.5 w-3.5" /> Demonstração
+                        Demonstração <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                     )}
                   </div>
@@ -636,22 +573,16 @@ function Projects() {
 
 function Certifications() {
   return (
-    <Section
-      id="certificacoes"
-      eyebrow="Certificações"
-      title="Formação complementar."
-    >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <Section id="certificacoes" eyebrow="05 — Certificações" title="Formação complementar.">
+      <div className="border-t border-border">
         {CERTIFICATIONS.map((c, i) => (
-          <FadeUp key={c.name} delay={i * 0.03}>
-            <div className="glass group flex items-start gap-4 rounded-2xl p-5 transition-all hover:border-primary/40">
-              <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan/15 text-cyan ring-1 ring-cyan/30">
-                <Award className="h-5 w-5" />
+          <FadeUp key={c.name} delay={i * 0.02}>
+            <div className="flex items-baseline justify-between gap-6 border-b border-border py-4">
+              <div className="flex items-baseline gap-6">
+                <span className="label-mono">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm">{c.name}</span>
               </div>
-              <div>
-                <div className="font-display text-sm font-medium">{c.name}</div>
-                {c.org && <div className="mt-0.5 text-xs text-muted-foreground">{c.org}</div>}
-              </div>
+              {c.org && <span className="font-mono text-[11px] text-muted-foreground">{c.org}</span>}
             </div>
           </FadeUp>
         ))}
@@ -662,18 +593,13 @@ function Certifications() {
 
 function Resume() {
   return (
-    <Section
-      id="curriculo"
-      eyebrow="Currículo"
-      title="Um resumo da minha carreira."
-      description="Baixe o currículo em PDF para conhecer minha trajetória em detalhes."
-    >
+    <Section id="curriculo" eyebrow="06 — Currículo" title="Um resumo da minha carreira.">
       <FadeUp>
-        <div className="glass flex flex-col items-start justify-between gap-6 rounded-2xl p-8 md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between gap-8 border border-border p-8 md:flex-row md:items-center md:p-10">
           <div className="max-w-xl">
-            <h3 className="font-display text-xl font-medium">Joabe Bragança — Analista de TI</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Suporte técnico corporativo (N1/N2), desenvolvimento web e automação de
+            <h3 className="text-lg">Joabe Bragança — Analista de TI</h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Suporte técnico corporativo (N1–N3), desenvolvimento web e automação de
               processos. Formado em Análise e Desenvolvimento de Sistemas.
             </p>
           </div>
@@ -682,9 +608,9 @@ function Resume() {
             download="Joabe_Pereira_Braganca_2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-[0_10px_40px_-10px_oklch(0.58_0.22_260/0.6)] transition-transform hover:scale-[1.02]"
+            className="inline-flex items-center gap-2 border border-foreground bg-foreground px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-background transition-colors hover:bg-background hover:text-foreground"
           >
-            <Download className="h-4 w-4" /> Download em PDF
+            <Download className="h-3.5 w-3.5" /> Download em PDF
           </a>
         </div>
       </FadeUp>
@@ -696,53 +622,44 @@ function PriceTable() {
   return (
     <Section
       id="valores"
-      eyebrow="Tabela de Valores"
+      eyebrow="07 — Tabela de Valores"
       title="Serviços de TI e Ordem de Serviço."
       description="Baixe a tabela completa com valores de manutenção, suporte técnico, instalação de sistemas e demais serviços."
     >
       <FadeUp>
-        <div className="glass relative overflow-hidden rounded-2xl p-8 md:p-10">
-          <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-cyan/20 blur-3xl" />
-          <div className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
-          <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <div className="flex items-start gap-5">
-              <div className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary ring-1 ring-primary/30">
-                <FileText className="h-6 w-6" />
-              </div>
-              <div className="max-w-xl">
-                <h3 className="font-display text-xl font-medium">
-                  Tabela de Serviços de TI
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Documento em PDF com a relação de serviços prestados, valores
-                  de referência e modelo de ordem de serviço para orçamento.
-                </p>
-              </div>
+        <div className="flex flex-col items-start justify-between gap-8 border border-border p-8 md:flex-row md:items-center md:p-10">
+          <div className="flex items-start gap-5">
+            <FileText className="mt-1 h-5 w-5 shrink-0" />
+            <div className="max-w-xl">
+              <h3 className="text-lg">Tabela de Serviços de TI</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Documento em PDF com a relação de serviços prestados, valores de
+                referência e modelo de ordem de serviço para orçamento.
+              </p>
             </div>
-            <div className="flex flex-col gap-2 sm:flex-row">
-              <a
-                href={tabelaAsset.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
-              >
-                <ExternalLink className="h-4 w-4" /> Visualizar
-              </a>
-              <a
-                href={tabelaAsset.url}
-                download="Tabela_de_Servicos_de_TI.pdf"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-[0_10px_40px_-10px_oklch(0.58_0.22_260/0.6)] transition-transform hover:scale-[1.02]"
-              >
-                <Download className="h-4 w-4" /> Baixar tabela
-              </a>
-            </div>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={tabelaAsset.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border border-border px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors hover:border-foreground"
+            >
+              Visualizar <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+            <a
+              href={tabelaAsset.url}
+              download="Tabela_de_Servicos_de_TI.pdf"
+              className="inline-flex items-center justify-center gap-2 border border-foreground bg-foreground px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-background transition-colors hover:bg-background hover:text-foreground"
+            >
+              <Download className="h-3.5 w-3.5" /> Baixar tabela
+            </a>
           </div>
         </div>
       </FadeUp>
     </Section>
   );
 }
-
 
 function Contact() {
   const [form, setForm] = useState({ nome: "", email: "", assunto: "", mensagem: "" });
@@ -761,7 +678,6 @@ function Contact() {
       (form.assunto ? `Assunto: ${form.assunto}\n\n` : "\n") +
       form.mensagem;
     const url = `https://wa.me/5561996430533?text=${encodeURIComponent(texto)}`;
-    // Usa um <a> real para evitar bloqueio de popup no iframe de preview
     const a = document.createElement("a");
     a.href = url;
     a.target = "_blank";
@@ -771,24 +687,27 @@ function Contact() {
     a.remove();
   };
 
+  const inputClass =
+    "w-full border-b border-border bg-transparent px-0 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-foreground";
+
   return (
     <Section
       id="contato"
-      eyebrow="Contato"
+      eyebrow="08 — Contato"
       title="Vamos conversar."
       description="Preencha o formulário ou fale por qualquer um dos canais abaixo."
     >
-      <div className="grid gap-8 md:grid-cols-[1.2fr_1fr]">
+      <div className="grid gap-12 md:grid-cols-[1.3fr_1fr]">
         <FadeUp>
-          <form className="glass space-y-4 rounded-2xl p-6" onSubmit={handleSubmit}>
-            <div className="grid gap-4 sm:grid-cols-2">
+          <form className="space-y-8" onSubmit={handleSubmit}>
+            <div className="grid gap-8 sm:grid-cols-2">
               <Field label="Nome">
                 <input
                   type="text"
                   required
                   value={form.nome}
                   onChange={(e) => setForm((f) => ({ ...f, nome: e.target.value }))}
-                  className="w-full rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary"
+                  className={inputClass}
                   placeholder="Seu nome"
                 />
               </Field>
@@ -798,7 +717,7 @@ function Contact() {
                   required
                   value={form.email}
                   onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                  className="w-full rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary"
+                  className={inputClass}
                   placeholder="voce@email.com"
                 />
               </Field>
@@ -808,37 +727,39 @@ function Contact() {
                 type="text"
                 value={form.assunto}
                 onChange={(e) => setForm((f) => ({ ...f, assunto: e.target.value }))}
-                className="w-full rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary"
+                className={inputClass}
                 placeholder="Como posso ajudar?"
               />
             </Field>
             <Field label="Mensagem">
               <textarea
-                rows={5}
+                rows={4}
                 required
                 value={form.mensagem}
                 onChange={(e) => setForm((f) => ({ ...f, mensagem: e.target.value }))}
-                className="w-full resize-none rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary"
+                className={`${inputClass} resize-none`}
                 placeholder="Escreva sua mensagem..."
               />
             </Field>
             {status === "error" && (
-              <p className="text-xs text-red-400">Preencha nome, e-mail e mensagem.</p>
+              <p className="font-mono text-[11px] text-destructive">
+                Preencha nome, e-mail e mensagem.
+              </p>
             )}
-            <button
-              type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:scale-[1.01] sm:w-auto"
-            >
-              Enviar via WhatsApp <ArrowRight className="h-4 w-4" />
-            </button>
-            <p className="text-xs text-muted-foreground">
-              Ao enviar, o WhatsApp abrirá com sua mensagem já preenchida.
-            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 border border-foreground bg-foreground px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-background transition-colors hover:bg-background hover:text-foreground"
+              >
+                Enviar via WhatsApp <ArrowRight className="h-3.5 w-3.5" />
+              </button>
+              <p className="label-mono">O WhatsApp abrirá com a mensagem preenchida</p>
+            </div>
           </form>
         </FadeUp>
 
-        <FadeUp delay={0.1}>
-          <div className="space-y-3">
+        <FadeUp delay={0.08}>
+          <div className="border-t border-border">
             <ContactLink icon={<MessageCircle className="h-4 w-4" />} label="WhatsApp" value="(61) 99643-0533" href="https://wa.me/5561996430533" />
             <ContactLink icon={<Linkedin className="h-4 w-4" />} label="LinkedIn" value="/in/joabe-braganca" href="https://www.linkedin.com/in/joabe-braganca" />
             <ContactLink icon={<Github className="h-4 w-4" />} label="GitHub" value="@Joabebraganca" href="https://github.com/Joabebraganca" />
@@ -853,7 +774,7 @@ function Contact() {
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}</span>
+      <span className="label-mono mb-2 block">{label}</span>
       {children}
     </label>
   );
@@ -873,30 +794,32 @@ function ContactLink({
   return (
     <a
       href={href}
-      className="glass group flex items-center justify-between rounded-xl p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-center justify-between gap-4 border-b border-border py-5 transition-colors hover:bg-secondary"
     >
-      <div className="flex items-center gap-3">
-        <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/30">
-          {icon}
-        </div>
+      <div className="flex items-center gap-4">
+        <span className="text-muted-foreground group-hover:text-foreground">{icon}</span>
         <div>
-          <div className="text-[11px] uppercase tracking-wider text-muted-foreground">{label}</div>
-          <div className="text-sm text-foreground">{value}</div>
+          <div className="label-mono">{label}</div>
+          <div className="mt-1 text-sm">{value}</div>
         </div>
       </div>
-      <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
     </a>
   );
 }
 
 function Footer() {
   return (
-    <footer className="border-t border-border/60">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-xs text-muted-foreground md:flex-row">
-        <div>© {new Date().getFullYear()} Joabe Bragança. Todos os direitos reservados.</div>
-        <div className="flex items-center gap-4">
-          <a href="#top" className="hover:text-foreground">Voltar ao topo</a>
+    <footer className="border-t border-border">
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 py-10 lg:px-10 md:flex-row md:items-center">
+        <div className="label-mono">
+          © {new Date().getFullYear()} Joabe Bragança — Todos os direitos reservados
         </div>
+        <a href="#top" className="label-mono hover:text-foreground">
+          Voltar ao topo
+        </a>
       </div>
     </footer>
   );
@@ -905,7 +828,6 @@ function Footer() {
 function Portfolio() {
   return (
     <div className="relative min-h-screen">
-      <Background />
       <Nav />
       <main>
         <Hero />
