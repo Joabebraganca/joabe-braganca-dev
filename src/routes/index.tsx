@@ -52,21 +52,23 @@ const NAV = [
 
 const EXPERIENCES = [
   {
-    company: "EON Incorporadora S.A.",
-    role: "Analista de Suporte de TI (PJ)",
+    company: "4P Capital Investment Holding",
+    role: "Suporte Técnico PJ",
     period: "Jul/2026 – Atual",
     items: [
-      "Suporte técnico a colaboradores: hardware, software, sistemas e infraestrutura",
-      "Instalação, configuração e manutenção de computadores, notebooks e impressoras",
-      "Gestão de contas de usuários, e-mails e permissões de acesso",
-      "Monitoramento da infraestrutura de TI e rede Wi-Fi corporativa",
-      "Administração e manutenção de fluxos de automação em n8n",
-      "Monitoramento de segurança, vulnerabilidades e boas práticas em aplicações",
-      "Testes, validações e manutenção preventiva de automações",
-      "Registro e acompanhamento de chamados e suporte a ferramentas corporativas",
-      "Tecnologias: n8n, Google Workspace, Windows 10/11, Microsoft 365, Redes TCP/IP e Wi-Fi, Cybersecurity",
+      "Suporte técnico N1, N2 e N3 aos usuários das empresas do grupo",
+      "Administração e manutenção de toda a infraestrutura de TI",
+      "Instalação, configuração e atualização de computadores, servidores, softwares e periféricos",
+      "Desenvolvimento, manutenção e evolução de sistemas internos (requisitos, features, bugs, testes e homologação)",
+      "Integração entre sistemas e APIs e automação de processos corporativos",
+      "Administração e suporte a bancos de dados",
+      "Gestão de usuários, acessos, permissões e ativos de TI",
+      "Documentação técnica, padronização de processos e implantação de novas soluções",
+      "Atendimento, treinamento de usuários finais e resolução de incidentes",
+      "Participação em projetos de inovação e transformação digital da holding",
     ],
   },
+
   {
     company: "Central IT",
     role: "Técnico de Operação e Serviços",
