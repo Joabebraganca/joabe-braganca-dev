@@ -70,7 +70,7 @@ export function Contact() {
   return (
     <Section id="contato">
       <SectionHeader
-        eyebrow="07 — Contato"
+        eyebrow="08 — Contato"
         title={
           <>
             Vamos construir algo <span className="text-gradient">sólido</span>.

@@ -6,7 +6,7 @@ export function Certifications() {
   return (
     <Section id="certificacoes">
       <SectionHeader
-        eyebrow="05 — Certificações"
+        eyebrow="06 — Certificações"
         title={
           <>
             Formação complementar em{" "}
