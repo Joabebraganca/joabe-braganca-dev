@@ -7,7 +7,7 @@ export function Documents() {
   return (
     <Section id="documentos">
       <SectionHeader
-        eyebrow="06 — Documentos"
+        eyebrow="07 — Documentos"
         title={
           <>
             Currículo e <span className="text-gradient">tabela de serviços</span>.

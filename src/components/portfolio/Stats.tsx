@@ -10,7 +10,7 @@ export function Stats() {
       </div>
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <div className="divider-glow" />
-        <dl className="grid grid-cols-2 gap-6 py-12 sm:grid-cols-3 lg:grid-cols-6">
+        <dl className="grid grid-cols-2 gap-6 py-12 sm:grid-cols-3 lg:grid-cols-5">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={0.05 * i}>
               <div>

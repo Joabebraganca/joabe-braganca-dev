@@ -12,6 +12,7 @@ export const NAV = [
   { href: "#sobre", label: "Sobre" },
   { href: "#especialidades", label: "Especialidades" },
   { href: "#projetos", label: "Projetos" },
+  { href: "#competencias", label: "Competências" },
   { href: "#trajetoria", label: "Trajetória" },
   { href: "#certificacoes", label: "Certificações" },
   { href: "#contato", label: "Contato" },
@@ -43,80 +44,56 @@ export const SPECIALTIES: Specialty[] = [
     icon: Code2,
     accent: "brand",
     description:
-      "Construção de aplicações web completas — do front-end à camada de serviços — com componentização, tipagem estática e APIs bem documentadas.",
-    tech: [
-      "React",
-      "Angular",
-      "TypeScript",
-      "JavaScript",
-      "Node.js",
-      "Express",
-      "NestJS",
-      "APIs REST",
-    ],
+      "Desenvolvimento de aplicações e sistemas web, do front-end à camada de serviços, com componentização e integração via APIs REST.",
+    tech: ["JavaScript", "HTML", "CSS", "PHP", "React", "TypeScript", "APIs REST"],
   },
   {
     title: "Inteligência Artificial",
     icon: Bot,
     accent: "violet",
     description:
-      "Integração de modelos de linguagem em produtos reais: agentes, assistentes internos, classificação e geração de conteúdo com controle de custo e qualidade.",
+      "Uso de modelos de linguagem em fluxos de trabalho reais: assistentes, agentes e apoio à automação de atendimento e processos.",
     tech: [
       "OpenAI",
       "Google Gemini",
-      "Anthropic Claude",
-      "Prompt Engineering",
-      "AI Agents",
-    ],
-  },
-  {
-    title: "Desenvolvimento Seguro",
-    icon: ShieldCheck,
-    accent: "cyan",
-    description:
-      "Segurança aplicada desde o design: validação rigorosa de entrada, autenticação e autorização corretas e mitigação das falhas mais exploradas.",
-    tech: [
-      "Secure Coding",
-      "OWASP Top 10",
-      "Validação de Entrada",
-      "Autenticação",
-      "Autorização",
-      "Boas práticas de desenvolvimento",
-    ],
-  },
-  {
-    title: "Cibersegurança",
-    icon: ShieldAlert,
-    accent: "brand",
-    description:
-      "Testes em aplicações web, análise de superfícies de ataque e reconhecimento — traduzindo achados em correções concretas no código.",
-    tech: [
-      "OWASP ZAP",
-      "Google Dorking",
-      "Folder Finder",
-      "Burp Suite Community",
-      "Nmap",
-      "Postman",
-      "Git",
-      "GitHub",
+      "Anthropic",
+      "Engenharia de Prompts",
+      "Agentes de IA",
     ],
   },
   {
     title: "Automações",
     icon: Workflow,
+    accent: "cyan",
+    description:
+      "Orquestração de fluxos que eliminam tarefas manuais, conectando sistemas internos e serviços externos.",
+    tech: ["n8n", "Dify", "APIs", "Webhooks", "Integrações"],
+  },
+  {
+    title: "Desenvolvimento Seguro",
+    icon: ShieldCheck,
+    accent: "brand",
+    description:
+      "Segurança considerada desde o desenvolvimento: validação de entrada, autenticação e controle de acesso adequados.",
+    tech: [
+      "Secure Coding",
+      "Boas práticas de desenvolvimento",
+      "Validação",
+      "Autenticação",
+      "Controle de acesso",
+    ],
+  },
+  {
+    title: "Cibersegurança",
+    icon: ShieldAlert,
     accent: "violet",
     description:
-      "Orquestração de fluxos que eliminam trabalho manual: integrações entre sistemas, webhooks, notificações e atendimento automatizado.",
+      "Conhecimento em testes de aplicações web, análise de vulnerabilidades e reconhecimento de ambientes.",
     tech: [
-      "n8n",
-      "Make",
-      "Dify",
-      "OpenAI",
-      "Gemini",
-      "Anthropic",
-      "APIs REST",
-      "Webhooks",
-      "WhatsApp API",
+      "OWASP ZAP (Zed Attack Proxy)",
+      "Google Dorking",
+      "Folder Finder",
+      "Postman",
     ],
   },
   {
@@ -124,143 +101,86 @@ export const SPECIALTIES: Specialty[] = [
     icon: Database,
     accent: "cyan",
     description:
-      "Modelagem relacional, políticas de acesso, consultas eficientes e administração de bases em ambientes corporativos.",
-    tech: ["Supabase", "PostgreSQL", "MySQL"],
+      "Administração e suporte a bases de dados utilizadas pelos sistemas internos e aplicações web.",
+    tech: ["Supabase"],
+  },
+];
+
+/* --------------------------- Competências técnicas --------------------------- */
+
+export const COMPETENCIES: { group: string; items: string[] }[] = [
+  { group: "Linguagens", items: ["JavaScript", "Python", "PHP", "HTML", "CSS"] },
+  {
+    group: "Ferramentas",
+    items: [
+      "GitHub",
+      "WordPress",
+      "Lovable",
+      "n8n",
+      "Active Directory",
+      "GLPI",
+      "AnyDesk",
+      "Google Workspace",
+      "Microsoft 365",
+    ],
+  },
+  { group: "Banco de Dados", items: ["Supabase"] },
+  {
+    group: "Inteligência Artificial",
+    items: ["OpenAI", "Google Gemini", "Anthropic"],
+  },
+  {
+    group: "Automações",
+    items: ["n8n", "Dify", "APIs", "Integrações", "Webhooks"],
   },
 ];
 
 /* --------------------------------- Projetos -------------------------------- */
 
-export type ProjectCategory =
-  | "Full Stack"
-  | "IA"
-  | "Automação"
-  | "Websites"
-  | "Cibersegurança";
-
 export type Project = {
   title: string;
   subtitle: string;
-  category: ProjectCategory[];
   description: string;
   tech: string[];
   features: string[];
-  challenge: string;
-  solution: string;
   image: string;
   demo?: string;
   repo?: string;
+  status?: "privado" | "desenvolvimento";
 };
-
-export const PROJECT_FILTERS = [
-  "Todos",
-  "Full Stack",
-  "IA",
-  "Automação",
-  "Websites",
-  "Cibersegurança",
-] as const;
 
 export const PROJECTS: Project[] = [
   {
-    title: "Mota Farias Advocacia",
-    subtitle: "Site institucional jurídico",
-    category: ["Websites", "Full Stack"],
-    description:
-      "Presença digital para escritório de advocacia em Brasília, com identidade sóbria, apresentação de áreas de atuação e foco em conversão direta por WhatsApp.",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    features: [
-      "Apresentação de áreas de atuação",
-      "Conversão via WhatsApp com mensagem pré-preenchida",
-      "Layout responsivo e SEO otimizado",
-    ],
-    challenge:
-      "Transmitir credibilidade institucional sem cair em templates genéricos de advocacia, mantendo carregamento rápido em conexões móveis.",
-    solution:
-      "Design system próprio com tipografia sóbria, imagens otimizadas, componentes reutilizáveis e CTA único e persistente ao longo da página.",
-    image:
-      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&h=760&fit=crop",
-    demo: "https://teste-joabe.lovable.app",
-  },
-  {
     title: "Portfólio Yasmin Bragança",
-    subtitle: "Portfólio pessoal sob medida",
-    category: ["Websites", "Full Stack"],
+    subtitle: "Website institucional",
     description:
-      "Portfólio digital elegante desenvolvido para apresentar trajetória, competências e trabalhos, com foco em leitura confortável e navegação fluida.",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      "Website institucional desenvolvido para apresentar serviços profissionais, utilizando design moderno, responsividade e boas práticas de desenvolvimento web.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Lovable"],
     features: [
-      "Seções de trajetória e competências",
-      "Animações de scroll reveal leves",
-      "Totalmente responsivo",
+      "Apresentação de serviços profissionais",
+      "Design moderno e responsivo",
+      "Navegação fluida entre as seções",
+      "Boas práticas de desenvolvimento web",
     ],
-    challenge:
-      "Criar uma identidade visual autoral e memorável mantendo desempenho alto e animações que não atrapalhem a leitura.",
-    solution:
-      "Paleta e tipografia personalizadas, animações discretas com respeito a `prefers-reduced-motion` e componentes enxutos e reaproveitáveis.",
     image:
       "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1200&h=760&fit=crop",
     demo: "https://yasmin-braganca.lovable.app",
   },
   {
-    title: "Agentes de Atendimento com IA",
-    subtitle: "Automação conversacional",
-    category: ["IA", "Automação"],
+    title: "Mota Farias Advocacia",
+    subtitle: "Website institucional jurídico",
     description:
-      "Fluxos de atendimento automatizado integrando WhatsApp, modelos de linguagem e base de conhecimento interna para triagem e resposta de solicitações.",
-    tech: ["n8n", "Dify", "OpenAI", "WhatsApp API", "Webhooks"],
+      "Website institucional desenvolvido para um escritório de advocacia, priorizando credibilidade, identidade visual profissional, navegação intuitiva, responsividade e excelente experiência do usuário.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Lovable"],
     features: [
-      "Triagem automática de solicitações",
-      "Respostas com base em conhecimento interno",
-      "Escalonamento para atendimento humano",
-      "Registro e histórico das conversas",
+      "Identidade visual profissional e sóbria",
+      "Apresentação das áreas de atuação",
+      "Navegação intuitiva e responsiva",
+      "Contato direto por WhatsApp",
     ],
-    challenge:
-      "Garantir respostas confiáveis sem alucinações e controlar o custo por conversa em um volume alto de mensagens.",
-    solution:
-      "Prompts com contexto restrito, validação de intenção antes da chamada ao modelo e regras determinísticas para os casos mais frequentes.",
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=760&fit=crop",
-  },
-  {
-    title: "Integrações e APIs Corporativas",
-    subtitle: "Backoffice conectado",
-    category: ["Full Stack", "Automação"],
-    description:
-      "Integrações entre sistemas internos de um grupo de empresas, sincronizando dados, disparando notificações e eliminando lançamentos manuais.",
-    tech: ["Node.js", "APIs REST", "PostgreSQL", "Supabase", "Webhooks"],
-    features: [
-      "Sincronização de dados entre sistemas",
-      "Webhooks com reprocessamento em falhas",
-      "Notificações automáticas para os times",
-      "Logs e rastreabilidade das execuções",
-    ],
-    challenge:
-      "Lidar com APIs de terceiros instáveis e evitar duplicidade de registros em execuções concorrentes.",
-    solution:
-      "Idempotência por chave de negócio, fila de reprocessamento com backoff e monitoramento das execuções com alertas.",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=760&fit=crop",
-  },
-  {
-    title: "Análise de Superfície de Ataque",
-    subtitle: "Avaliação de segurança web",
-    category: ["Cibersegurança"],
-    description:
-      "Avaliações de segurança em aplicações web: reconhecimento, mapeamento de endpoints expostos e verificação das falhas do OWASP Top 10.",
-    tech: ["OWASP ZAP", "Burp Suite", "Nmap", "Google Dorking", "Postman"],
-    features: [
-      "Reconhecimento e enumeração de diretórios",
-      "Testes de autenticação e autorização",
-      "Verificação de validação de entrada",
-      "Relatório com severidade e correção sugerida",
-    ],
-    challenge:
-      "Transformar achados técnicos em ações priorizadas e compreensíveis para times de desenvolvimento e gestão.",
-    solution:
-      "Relatórios com classificação de risco, prova de conceito reprodutível e recomendação de correção no nível do código.",
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=760&fit=crop",
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&h=760&fit=crop",
+    demo: "https://teste-joabe.lovable.app",
   },
 ];
 
@@ -270,10 +190,7 @@ export const CERTIFICATIONS = [
   { name: "Desenvolvedor Full Stack", org: "UniCEUB" },
   { name: "Python Development", org: "FIAP" },
   { name: "Cybersecurity", org: "FIAP" },
-  {
-    name: "Introdução à Cibersegurança",
-    org: "Cisco Networking Academy",
-  },
+  { name: "Introdução à Cibersegurança", org: "Cisco Networking Academy" },
   { name: "Segurança da Informação", org: "Fundação Bradesco" },
   { name: "E-commerce", org: "FGV" },
   { name: "Engenharia de Prompts", org: "Formação complementar" },
@@ -290,6 +207,7 @@ export type TimelineEntry = {
   period: string;
   title: string;
   org: string;
+  highlight?: boolean;
   items?: string[];
 };
 
@@ -299,28 +217,17 @@ export const TIMELINE: TimelineEntry[] = [
     period: "Jul/2026 — Atual",
     title: "Suporte Técnico PJ",
     org: "4P Capital Investment Holding",
+    highlight: true,
     items: [
-      "Suporte técnico N1, N2 e N3 aos usuários das empresas do grupo",
-      "Administração e manutenção de toda a infraestrutura de TI",
-      "Desenvolvimento, manutenção e evolução de sistemas internos",
-      "Integração entre sistemas e APIs e automação de processos corporativos",
-      "Administração e suporte a bancos de dados",
-      "Gestão de usuários, acessos, permissões e ativos de TI",
+      "Suporte técnico N1, N2 e N3 aos colaboradores das empresas do grupo",
+      "Administração da infraestrutura de TI",
+      "Desenvolvimento e manutenção de sistemas internos",
+      "Integração entre sistemas e APIs",
+      "Automação de processos corporativos",
+      "Administração de bancos de dados",
       "Documentação técnica e padronização de processos",
+      "Implantação de soluções e participação em projetos de transformação digital",
     ],
-  },
-  {
-    kind: "projeto",
-    period: "2026",
-    title: "Portfólio Yasmin Bragança",
-    org: "Projeto autoral",
-    items: ["React, TypeScript e Tailwind CSS com animações leves"],
-  },
-  {
-    kind: "certificacao",
-    period: "2025",
-    title: "Introdução à Cibersegurança",
-    org: "Cisco Networking Academy",
   },
   {
     kind: "experiencia",
@@ -351,7 +258,7 @@ export const TIMELINE: TimelineEntry[] = [
     items: [
       "Manutenção de websites em WordPress e React",
       "Automações com n8n e Dify",
-      "E-commerce em Shopify e WooCommerce",
+      "Suporte a lojas de e-commerce",
     ],
   },
   {
@@ -368,8 +275,15 @@ export const TIMELINE: TimelineEntry[] = [
     kind: "experiencia",
     period: "Anterior",
     title: "Estagiário de TI",
-    org: "Dunice e Marcon Advogados",
+    org: "Dunice e Marcon Advogados Associados",
     items: ["Suporte aos usuários e configuração de equipamentos"],
+  },
+  {
+    kind: "experiencia",
+    period: "Anterior",
+    title: "Suporte Técnico",
+    org: "Edições CNBB",
+    items: ["Atendimento aos usuários e suporte a equipamentos e sistemas"],
   },
   {
     kind: "formacao",
@@ -381,11 +295,21 @@ export const TIMELINE: TimelineEntry[] = [
 
 /* -------------------------------- Estatísticas ------------------------------ */
 
+const TECHNOLOGIES = new Set(
+  SPECIALTIES.flatMap((s) => s.tech).concat(PROJECTS.flatMap((p) => p.tech)),
+);
+const TOOLS = new Set(
+  COMPETENCIES.find((c) => c.group === "Ferramentas")?.items ?? [],
+);
+
 export const STATS = [
-  { label: "Projetos desenvolvidos", value: 24, suffix: "+" },
-  { label: "Certificações", value: 9, suffix: "" },
-  { label: "Tecnologias", value: 35, suffix: "+" },
-  { label: "Ferramentas", value: 20, suffix: "+" },
-  { label: "Horas de estudo", value: 2500, suffix: "+" },
-  { label: "Soluções entregues", value: 60, suffix: "+" },
+  {
+    label: "Experiências profissionais",
+    value: TIMELINE.filter((t) => t.kind === "experiencia").length,
+    suffix: "",
+  },
+  { label: "Projetos publicados", value: PROJECTS.length, suffix: "" },
+  { label: "Certificações", value: CERTIFICATIONS.length, suffix: "" },
+  { label: "Tecnologias", value: TECHNOLOGIES.size, suffix: "" },
+  { label: "Ferramentas", value: TOOLS.size, suffix: "" },
 ];

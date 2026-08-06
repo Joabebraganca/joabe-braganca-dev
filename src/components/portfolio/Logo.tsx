@@ -1,4 +1,4 @@
-import markSrc from "@/assets/jb-mark.png";
+import markSrc from "@/assets/jb-mark-v2.png";
 
 /** Horizontal lockup: symbol + wordmark. Works on light and dark surfaces. */
 export function Logo({
@@ -17,7 +17,7 @@ export function Logo({
             Joabe Bragança
           </span>
           <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-            Full Stack · AI · Security
+            Full Stack · IA · Segurança
           </span>
         </span>
       )}

@@ -13,13 +13,14 @@ import { SOCIAL } from "@/data/portfolio";
 import { Reveal } from "./primitives";
 
 const HIGHLIGHTS = [
-  "React · Angular · TypeScript",
-  "Node.js · NestJS · APIs REST",
-  "OpenAI · Gemini · Claude",
-  "OWASP · Secure Coding",
-  "n8n · Make · Dify",
-  "Supabase · PostgreSQL",
+  "React · TypeScript · JavaScript",
+  "PHP · APIs REST",
+  "OpenAI · Gemini · Anthropic",
+  "Secure Coding · OWASP ZAP",
+  "n8n · Dify · Webhooks",
+  "Supabase · Microsoft 365 · Active Directory",
 ];
+
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -67,21 +68,23 @@ export function Hero() {
 
             <Reveal delay={0.12}>
               <p className="mt-4 font-mono text-[13px] uppercase tracking-[0.14em] text-muted-foreground sm:text-sm">
-                Full Stack Developer
+                Desenvolvedor Full Stack
                 <span className="mx-2 text-[color-mix(in_oklab,var(--brand)_70%,transparent)]">•</span>
-                AI Engineer
+                Automação com IA
                 <span className="mx-2 text-[color-mix(in_oklab,var(--violet)_70%,transparent)]">•</span>
-                Cybersecurity
+                Desenvolvimento Seguro
               </p>
             </Reveal>
 
             <Reveal delay={0.18}>
               <p className="mt-7 max-w-xl text-[15px] leading-relaxed text-muted-foreground md:text-base">
-                Desenvolvo aplicações modernas, automações inteligentes e soluções
-                digitais com foco em segurança, escalabilidade, desempenho e
-                experiência do usuário.
+                Atuo no desenvolvimento web e de sistemas internos, automação de
+                processos com IA, integração entre sistemas via APIs,
+                administração de infraestrutura de TI e desenvolvimento seguro,
+                com base em cibersegurança e suporte técnico N1, N2 e N3.
               </p>
             </Reveal>
+
 
             <Reveal delay={0.24}>
               <div className="mt-9 flex flex-wrap gap-3">
@@ -105,6 +108,13 @@ export function Hero() {
                 >
                   <Download className="h-4 w-4" /> Download CV
                 </a>
+                <a
+                  href="#contato"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-secondary/50 px-5 py-3 text-sm font-medium transition-colors hover:border-[color-mix(in_oklab,var(--violet)_50%,transparent)]"
+                >
+                  <Mail className="h-4 w-4" /> Contato
+                </a>
+
                 <IconLink href={SOCIAL.github} label="GitHub">
                   <Github className="h-4 w-4" />
                 </IconLink>
