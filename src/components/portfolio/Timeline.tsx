@@ -16,7 +16,7 @@ export function Timeline() {
   return (
     <Section id="trajetoria">
       <SectionHeader
-        eyebrow="04 — Trajetória"
+        eyebrow="05 — Trajetória"
         title={
           <>
             Formação, certificações e{" "}
