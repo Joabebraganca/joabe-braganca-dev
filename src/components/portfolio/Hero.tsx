@@ -13,13 +13,14 @@ import { SOCIAL } from "@/data/portfolio";
 import { Reveal } from "./primitives";
 
 const HIGHLIGHTS = [
-  "React · Angular · TypeScript",
-  "Node.js · NestJS · APIs REST",
-  "OpenAI · Gemini · Claude",
-  "OWASP · Secure Coding",
-  "n8n · Make · Dify",
-  "Supabase · PostgreSQL",
+  "React · TypeScript · JavaScript",
+  "PHP · APIs REST",
+  "OpenAI · Gemini · Anthropic",
+  "Secure Coding · OWASP ZAP",
+  "n8n · Dify · Webhooks",
+  "Supabase · Microsoft 365 · Active Directory",
 ];
+
 
 export function Hero() {
   const reduce = useReducedMotion();
