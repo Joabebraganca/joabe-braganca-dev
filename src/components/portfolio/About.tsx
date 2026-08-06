@@ -33,42 +33,43 @@ export function About() {
             eyebrow="01 — Sobre"
             title={
               <>
-                Engenharia de software que une{" "}
-                <span className="text-gradient">produto, dados e segurança</span>.
+                Engenharia de software, infraestrutura e{" "}
+                <span className="text-gradient">segurança</span>.
               </>
             }
           />
           <Reveal delay={0.08}>
             <div className="mt-8 max-w-2xl space-y-5 text-[15px] leading-relaxed text-muted-foreground">
               <p>
-                Atuo no desenvolvimento de aplicações web full stack — do design da
-                interface à modelagem de dados e à construção de APIs REST — com
-                foco em arquitetura clara, código sustentável e desempenho
-                consistente em produção.
+                Profissional de Tecnologia da Informação com experiência em
+                suporte técnico N1, N2 e N3, atendendo colaboradores e sustentando
+                a operação de ambientes corporativos, incluindo administração de
+                toda a infraestrutura de TI, gestão de acessos e documentação
+                técnica.
               </p>
               <p>
-                Aplico Inteligência Artificial de forma pragmática: agentes,
-                assistentes internos e integrações com OpenAI, Gemini e Claude
-                conectados a processos reais de negócio. Junto a isso, desenvolvo
-                automações que integram sistemas via APIs, webhooks e plataformas
-                de orquestração, reduzindo trabalho manual e tempo de resposta.
+                Atuo também no desenvolvimento de sistemas internos e de
+                aplicações web, utilizando JavaScript, TypeScript, React, PHP,
+                HTML e CSS, além da construção e consumo de APIs REST para
+                integrar sistemas e eliminar lançamentos manuais.
               </p>
               <p>
-                Segurança não é etapa final: trabalho com desenvolvimento seguro
-                desde o design, considerando as falhas do OWASP Top 10, validação
-                rigorosa de entrada, autenticação e autorização corretas. Em
-                cibersegurança, realizo testes em aplicações web, análise de
-                superfícies de ataque e reconhecimento, traduzindo achados em
-                correções concretas.
+                Desenvolvo automações de processos com n8n, Dify, webhooks e
+                integrações, aplicando Inteligência Artificial com OpenAI, Google
+                Gemini e Anthropic em fluxos de atendimento e apoio operacional.
+                Na camada de dados, administro e dou suporte a bases em Supabase.
               </p>
               <p>
-                Também administro infraestrutura de TI, bancos de dados e
-                ambientes em cloud, sustentando operações corporativas e entregando
-                soluções escaláveis com documentação e padronização de processos.
+                Trabalho com desenvolvimento seguro — validação de entrada,
+                autenticação e controle de acesso — apoiado por conhecimento em
+                cibersegurança: testes em aplicações web, análise de
+                vulnerabilidades e reconhecimento de ambientes com ferramentas
+                como OWASP ZAP, Google Dorking, Folder Finder e Postman.
               </p>
             </div>
           </Reveal>
         </div>
+
 
         <div className="grid content-start gap-4 sm:grid-cols-2 lg:mt-4">
           {PILLARS.map((p, i) => (
