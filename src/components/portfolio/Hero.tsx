@@ -68,21 +68,23 @@ export function Hero() {
 
             <Reveal delay={0.12}>
               <p className="mt-4 font-mono text-[13px] uppercase tracking-[0.14em] text-muted-foreground sm:text-sm">
-                Full Stack Developer
+                Desenvolvedor Full Stack
                 <span className="mx-2 text-[color-mix(in_oklab,var(--brand)_70%,transparent)]">•</span>
-                AI Engineer
+                Automação com IA
                 <span className="mx-2 text-[color-mix(in_oklab,var(--violet)_70%,transparent)]">•</span>
-                Cybersecurity
+                Desenvolvimento Seguro
               </p>
             </Reveal>
 
             <Reveal delay={0.18}>
               <p className="mt-7 max-w-xl text-[15px] leading-relaxed text-muted-foreground md:text-base">
-                Desenvolvo aplicações modernas, automações inteligentes e soluções
-                digitais com foco em segurança, escalabilidade, desempenho e
-                experiência do usuário.
+                Atuo no desenvolvimento web e de sistemas internos, automação de
+                processos com IA, integração entre sistemas via APIs,
+                administração de infraestrutura de TI e desenvolvimento seguro,
+                com base em cibersegurança e suporte técnico N1, N2 e N3.
               </p>
             </Reveal>
+
 
             <Reveal delay={0.24}>
               <div className="mt-9 flex flex-wrap gap-3">
