@@ -72,6 +72,8 @@ function Portfolio() {
         <About />
         <Specialties />
         <Projects />
+        <Competencies />
+
         <Timeline />
         <Certifications />
         <Documents />
