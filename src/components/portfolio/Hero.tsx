@@ -108,6 +108,13 @@ export function Hero() {
                 >
                   <Download className="h-4 w-4" /> Download CV
                 </a>
+                <a
+                  href="#contato"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-secondary/50 px-5 py-3 text-sm font-medium transition-colors hover:border-[color-mix(in_oklab,var(--violet)_50%,transparent)]"
+                >
+                  <Mail className="h-4 w-4" /> Contato
+                </a>
+
                 <IconLink href={SOCIAL.github} label="GitHub">
                   <Github className="h-4 w-4" />
                 </IconLink>
