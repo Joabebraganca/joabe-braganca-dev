@@ -5,6 +5,8 @@ import { Stats } from "@/components/portfolio/Stats";
 import { About } from "@/components/portfolio/About";
 import { Specialties } from "@/components/portfolio/Specialties";
 import { Projects } from "@/components/portfolio/Projects";
+import { Competencies } from "@/components/portfolio/Competencies";
+
 import { Timeline } from "@/components/portfolio/Timeline";
 import { Certifications } from "@/components/portfolio/Certifications";
 import { Documents } from "@/components/portfolio/Documents";
